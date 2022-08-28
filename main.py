@@ -7,10 +7,18 @@ reddit = praw.Reddit(client_id=client_id,
                      username=username,
                      password=password)
 
-subreddit = reddit.subreddit('wallstreetbets')
+subreddit = reddit.subreddit('HarryPotter')
 
-top_subreddit = subreddit.new(limit=25)
+top_subreddit = subreddit.top(limit=25)
 
 for submission in top_subreddit:
     title = submission.title
+    url = submission.url
+
+
+
     print(title)
+    print(url)
+    for comment in submission.comments:
+        print(comment.body)
+        break
